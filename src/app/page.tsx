@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FaGithub, FaLinkedin, FaFilePdf  } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaFilePdf } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -13,9 +13,10 @@ export default function Home() {
       />
       <h1 className="text-4xl font-bold text-gray-700">Hi, I'm Axel Hedman</h1>
       <p className="max-w-xl text-gray-700 text-lg">
-        I’m a bioinformatics student with a strong background in software engineering, 
-        data science, and machine learning. I love solving health tech challenges with code. When I’m not coding, 
-        you’ll find me outdoors — hiking, skiing, or playing any sport that involves a ball.
+        I’m a bioinformatics student with a strong background in software
+        engineering, data science, and machine learning. I love solving health
+        tech challenges with code. When I’m not coding, you’ll find me outdoors
+        — hiking, skiing, or playing any sport that involves a ball.
       </p>
       <div className="flex space-x-6">
         <a
@@ -42,7 +43,7 @@ export default function Home() {
           rel="noopener noreferrer"
           className="flex items-center px-4 py-2 rounded-md bg-blue-500 text-white font-medium hover:bg-blue-600 transition"
         >
-          <FaFilePdf  className="mr-2 text-xl" />
+          <FaFilePdf className="mr-2 text-xl" />
           CV
         </a>
       </div>
