@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 export default function NKCellGame() {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -10,24 +10,6 @@ export default function NKCellGame() {
   useEffect(() => {
     const mount = mountRef.current;
     if (!mount) return;
-
-    const direction = new THREE.Vector3();
-    const speed = 0.1;
-
-    // Handle key events
-    const keysPressed: Record<string, boolean> = {};
-    const handleKeyDown = (e: KeyboardEvent) => {
-      console.log("KeyDown event:", e.key, e.code);
-      keysPressed[e.key.toLowerCase()] = true;
-    };
-
-    const handleKeyUp = (e: KeyboardEvent) => {
-      console.log("KeyUp event:", e.key, e.code);
-      keysPressed[e.key.toLowerCase()] = false;
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -43,9 +25,9 @@ export default function NKCellGame() {
 
     // Set color and fog for the scene
     scene.background = new THREE.Color(0x331a1a); // dark reddish for tissue vibes
-    scene.fog = new THREE.Fog(0x331a1a, 5, 20); // near, far distances for fog
+    scene.fog = new THREE.Fog(0x331a1a, 5, 20);    // near, far distances for fog
 
-    // Add some blobs
+    // Add some blobs 
     const tissueMaterial = new THREE.MeshStandardMaterial({
       color: 0xaa6666,
       roughness: 1,
@@ -53,12 +35,9 @@ export default function NKCellGame() {
       opacity: 0.3,
       transparent: true,
     });
-
+    
     for (let i = 0; i < 100; i++) {
-      const blob = new THREE.Mesh(
-        new THREE.SphereGeometry(0.5, 16, 16),
-        tissueMaterial
-      );
+      const blob = new THREE.Mesh(new THREE.SphereGeometry(0.5, 16, 16), tissueMaterial);
       blob.position.set(
         (Math.random() - 0.5) * 30,
         (Math.random() - 0.5) * 30,
@@ -73,13 +52,19 @@ export default function NKCellGame() {
       color: 0x551111,
       side: THREE.BackSide,
       transparent: false,
-      opacity: 1, // <- Fully visible
+      opacity: 1,         // <- Fully visible
       roughness: 1,
       metalness: 0,
     });
     const tunnel = new THREE.Mesh(tunnelGeometry, tunnelMaterial);
     tunnel.rotation.x = Math.PI / 2;
     scene.add(tunnel);
+
+    // Orbit Controls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // for smoothness
+    controls.dampingFactor = 0.05;
+    controls.update();
 
     // NK Cell (Sphere)
     const geometry = new THREE.SphereGeometry(1, 32, 32);
@@ -106,27 +91,12 @@ export default function NKCellGame() {
 
     // Camera position
     camera.position.z = 5;
+
     // Animate
     const animate = () => {
       requestAnimationFrame(animate);
       sphere.rotation.y += 0.01;
-
-      direction.set(0, 0, 0);
-      if (keysPressed["w"]) direction.z -= 1;
-      if (keysPressed["s"]) direction.z += 1;
-      if (keysPressed["a"]) direction.x -= 1;
-      if (keysPressed["d"]) direction.x += 1;
-
-      direction.normalize().multiplyScalar(speed);
-      sphere.position.add(direction);
-
-      // 3rd person chase camera
-      const cameraOffset = new THREE.Vector3(0, 3, 6); // camera stays behind & above
-      const desiredCameraPos = sphere.position.clone().add(cameraOffset);
-
-      // Smooth follow
-      camera.position.lerp(desiredCameraPos, 0.1); // adjust 0.1 for trailing smoothness
-      camera.lookAt(sphere.position);
+      controls.update(); // <- Required if using damping
       renderer.render(scene, camera);
     };
     animate();
@@ -134,6 +104,7 @@ export default function NKCellGame() {
     // Cleanup
     return () => {
       mount.removeChild(renderer.domElement);
+      controls.dispose();
     };
   }, []);
 
@@ -144,8 +115,8 @@ export default function NKCellGame() {
         <p className="text-lg text-gray-700">
           OH NO! Your body is under siege! A stealthy virus has breached your
           defenses, and you've been transformed into a natural killer cell (NK
-          Cell). Your mission: track down and annihilate infected cells to
-          prevent the virus from spreading. The fate of your body rests in your
+          Cell). Your mission: track down and annihilate every infected cell
+          before they can spread. The fate of your body rests in your
           hands—defend it at all costs!
         </p>
       </header>
