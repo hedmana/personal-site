@@ -14,7 +14,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-full px-6 py-4 bg-blue-500 flex justify-between items-center">
+    <nav className="w-full px-6 py-4 bg-blue-500 flex justify-between items-center select-none">
       <h1 className="text-xl font-bold text-white flex items-center">
         <Link href="/NKCellGame" className="text-3xl mr-4 virus-flip">
           <FaVirus />

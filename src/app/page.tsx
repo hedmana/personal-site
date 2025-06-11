@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FaGithub, FaLinkedin, FaFilePdf, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -13,7 +13,8 @@ export default function Home() {
         alt="Axel Hedman"
         width={300}
         height={300}
-        className="rounded-full border-4 border-gray-200 shadow-md"
+        priority
+        className="rounded-full border-4 border-gray-200 shadow-md select-none"
       />
       <p className="max-w-xl text-gray-700 text-lg">
         I’m a bioinformatics student (MSc) at{" "}
@@ -71,9 +72,10 @@ export default function Home() {
         >
           OP Financial Group
         </a>
-        .
+        . If you want to take a closer look at my CV, feel free to shoot me an
+        email.
       </p>
-      <div className="flex space-x-6">
+      <div className="flex space-x-6 select-none">
         <a
           href="https://github.com/hedmana"
           target="_blank"
@@ -100,15 +102,6 @@ export default function Home() {
         >
           <FaEnvelope className="mr-2 text-xl" />
           Email
-        </a>
-        <a
-          href="/axel_hedman_CV.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center px-4 py-2 rounded-md bg-blue-500 text-white font-medium hover:bg-blue-600 transition"
-        >
-          <FaFilePdf className="mr-2 text-xl" />
-          CV
         </a>
       </div>
     </main>
