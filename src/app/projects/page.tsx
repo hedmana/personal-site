@@ -26,14 +26,18 @@ export default async function ProjectsPage() {
 
   return (
     <main className="p-4">
-      <h1 className="text-3xl font-bold mb-6">My GitHub Projects</h1>
+      <h1 className="text-4xl font-bold mb-6 text-gray-700">
+        My GitHub Projects
+      </h1>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
         {filteredProjects.map((project: any) => (
           <div
             key={project.id}
             className="border p-4 rounded shadow hover:shadow-md hover:bg-white transition"
           >
-            <h2 className="text-xl font-semibold">{project.name}</h2>
+            <h2 className="text-xl font-semibold text-gray-700">
+              {project.name}
+            </h2>
             <p className="mt-2 text-gray-700">
               {project.description || "No description available"}
             </p>

@@ -123,7 +123,7 @@ export default function NKCellGame() {
       zIndex: "10",
       userSelect: "none",
     });
-    counter.innerText = `Enemies Remaining: ${MAX_ENEMIES} / ${MAX_ENEMIES}`;
+    counter.innerText = `Infected Cells Remaining: ${MAX_ENEMIES} / ${MAX_ENEMIES}`;
     mount.appendChild(counter);
 
     const enemies: THREE.Mesh[] = [];
@@ -156,7 +156,7 @@ export default function NKCellGame() {
       scene.add(enemy);
       enemies.push(enemy);
       totalEnemiesSpawned++;
-      counter.innerText = `Enemies Remaining: ${
+      counter.innerText = `Infected Cells Remaining: ${
         MAX_ENEMIES - enemiesEliminated
       } / ${MAX_ENEMIES}`;
     };
@@ -282,7 +282,7 @@ export default function NKCellGame() {
   };
 
   return (
-    <main className="relative p-4">
+    <main className="p-4">
       <div className="relative w-full h-[calc(100vh-95px)] select-none">
         {(gameState === "menu" || gameState === "paused") && (
           <div className="absolute inset-0 bg-red-800 bg-opacity-70 z-50 flex flex-col items-center justify-center">

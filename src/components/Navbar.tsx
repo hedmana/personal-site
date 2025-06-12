@@ -1,17 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { FaVirus, FaLongArrowAltLeft } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [gameOpen, setGameOpen] = useState(false);
-
-  const handleIconClick = () => {
-    setGameOpen(!gameOpen);
-  };
 
   return (
     <nav className="w-full px-6 py-4 bg-blue-500 flex justify-between items-center select-none">
@@ -37,11 +31,21 @@ export default function Navbar() {
           href="/projects"
           className={`font-medium px-3 py-1 rounded transition-all duration-500 ${
             pathname === "/projects"
-              ? "bg-white text-blue-500"
+              ? "bg-white text-blue-600"
               : "text-white hover:bg-blue-300 hover:text-blue-600"
           }`}
         >
           Projects
+        </Link>
+        <Link
+          href="/blog"
+          className={`font-medium px-3 py-1 rounded transition-all duration-500 ${
+            pathname.startsWith("/blog")
+              ? "bg-white text-blue-600"
+              : "text-white hover:bg-blue-300 hover:text-blue-600"
+          }`}
+        >
+          Blog
         </Link>
       </div>
     </nav>

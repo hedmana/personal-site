@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <link rel="icon" href="/favicon.png" />
       </head>
-      <body className="min-h-screen bg-gradient-to-b from-white to-blue-200 text-gray-900">
+      <body className="min-h-screen bg-gradient-to-b from-white to-blue-200">
         <Navbar />
         {children}
       </body>
