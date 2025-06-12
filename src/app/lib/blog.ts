@@ -1,30 +1,19 @@
 export type BlogPost = {
+  id: number;
   title: string;
   slug: string;
   date: string;
   content: string;
 };
 
-export const blogPosts: BlogPost[] = [
-  {
-    title: "Welcome to My Blog",
-    slug: "welcome",
-    date: "2025-06-12",
-    content: "This is my first blog post. Stay tuned for more!",
-  },
-  {
-    title: "Why I Built This Site",
-    slug: "why-this-site",
-    date: "2025-06-10",
-    content:
-      "I wanted to showcase my skills and learn modern full-stack development.",
-  },
-];
-
-export function getAllPosts() {
-  return blogPosts;
+export async function getAllPosts() {
+  const res = await fetch("http://localhost:5000/api/posts");
+  if (!res.ok) throw new Error("Failed to fetch posts");
+  return await res.json();
 }
 
-export function getPostBySlug(slug: string) {
-  return blogPosts.find((post) => post.slug === slug);
+export async function getPostBySlug(slug: string) {
+  const res = await fetch(`http://localhost:5000/api/posts/${slug}`);
+  if (!res.ok) return null;
+  return await res.json();
 }
