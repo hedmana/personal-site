@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { login } from "@/app/lib/api";
 import { useRouter } from "next/navigation";
 
@@ -9,13 +9,22 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const router = useRouter();
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      router.push("/"); // Redirect if already logged in
+    }
+  }, [router]);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     try {
       await login(username, password);
-      router.push("/"); // Redirect wherever you want
+      const redirectPath = localStorage.getItem("redirectAfterLogin") || "/";
+      localStorage.removeItem("redirectAfterLogin");
+      router.push(redirectPath);
     } catch (err: any) {
       setError(err.message);
     }

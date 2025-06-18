@@ -20,11 +20,17 @@ router.post("/signup", async (req, res) => {
     if (existing.rows.length > 0) {
       return res.status(400).json({ message: "User already exists" });
     }
+
+    // Check password length (at least 5 characters)
+    if (password.length < 5) {
+      return res.status(400).json({ message: "Password must be at least 5 characters long" });
+    }
+
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
     // Insert new user into the database
     const result = await pool.query(
-      "INSERT INTO users (username, password_hash, role) VALUES ($1, $2, $3) RETURNING id, role",
+      "INSERT INTO users (username, password_hash, role, created_at) VALUES ($1, $2, $3, NOW()) RETURNING id, role, created_at",
       [username, hashedPassword, "user"]
     );
 
@@ -47,10 +53,10 @@ router.post("/login", async (req, res) => {
     );
 
     const user = userResult.rows[0];
-    if (!user) return res.status(400).json({ message: "Invalid credentials" });
+    if (!user) return res.status(400).json({ message: "User not found" });
 
     const match = await bcrypt.compare(password, user.password_hash);
-    if (!match) return res.status(400).json({ message: "Invalid credentials" });
+    if (!match) return res.status(400).json({ message: "Incorrect password" });
 
     const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, {
       expiresIn: "1d",

@@ -1,12 +1,15 @@
 import Link from "next/link";
-import { getAllPosts, BlogPost } from "@/app/lib/blog";
+import { getBlogPosts, BlogPost } from "@/app/lib/api";
 
 export default async function BlogPage() {
-  const posts = await getAllPosts();
+  const posts = await getBlogPosts();
 
-  return (
+  return ( 
     <main className="p-4 text-gray-700">
       <h1 className="text-4xl font-bold mb-6">Blog</h1>
+      <p className="mb-4">
+        Create an account to like and comment on posts :) 
+        </p>
       <div>
         {posts.length > 0 ? (
           posts.map((post: BlogPost) => (

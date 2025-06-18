@@ -6,7 +6,7 @@ export default function Home() {
     <main className="flex flex-col items-center mt-5 p-4 text-center space-y-4">
       <h1 className="text-4xl font-bold text-gray-700">Axel Hedman</h1>
       <p className="max-w-xl text-gray-500 text-lg">
-        Research Scientist/Bioinformatics Student
+        Research Scientist/CS Student
       </p>
       <Image
         src="/axel.jpg"
@@ -17,7 +17,7 @@ export default function Home() {
         className="rounded-full border-4 border-gray-200 shadow-md select-none"
       />
       <p className="max-w-xl text-gray-700 text-lg">
-        I’m a bioinformatics student (MSc) at{" "}
+        I’m a MSc student at{" "}
         <a
           href="https://www.aalto.fi/en"
           className="text-blue-500 hover:text-blue-700"

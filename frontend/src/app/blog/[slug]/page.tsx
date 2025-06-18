@@ -1,4 +1,4 @@
-import { getPostBySlug, getAllPosts, BlogPost } from "@/app/lib/blog";
+import { getBlogPostBySlug } from "@/app/lib/api";
 import { notFound } from "next/navigation";
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
