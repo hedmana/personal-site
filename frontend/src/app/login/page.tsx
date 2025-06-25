@@ -32,7 +32,7 @@ export default function LoginPage() {
 
   return (
     <div className="max-w-md mx-auto mt-10">
-      <h1 className="text-2xl mb-4">Login</h1>
+      <h1 className="text-2xl mb-4">Sign in</h1>
       <form onSubmit={handleLogin} className="flex flex-col gap-4">
         <input
           type="text"
@@ -49,7 +49,7 @@ export default function LoginPage() {
           className="border p-2"
         />
         <button type="submit" className="bg-green-600 text-white p-2 rounded">
-          Login
+          Sign in
         </button>
         {error && <p className="text-red-500">{error}</p>}
       </form>
