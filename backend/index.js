@@ -18,8 +18,10 @@ const allowedOrigins =
   process.env.NODE_ENV === "production"
     ? [
         "https://personal-site-theta-woad.vercel.app",
+        "https://axelhedman.fi",           // Add your domain
+        "https://www.axelhedman.fi",       // Add www version
       ]
-    : ["http://localhost:3000", process.env.CORS_ORIGIN];
+    : [process.env.CORS_ORIGIN];
 
 app.use(
   cors({
