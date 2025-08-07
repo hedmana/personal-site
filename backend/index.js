@@ -17,10 +17,7 @@ app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"));
 const allowedOrigins =
   process.env.NODE_ENV === "production"
     ? [
-        "https://axelhedman.com",
-        "https://www.axelhedman.com",
-        "https://personal-site-frontend.vercel.app", // Add this temporarily
-        "https://personal-site-git-main-hedmana.vercel.app", // Vercel auto-generates these
+        "https://personal-site-theta-woad.vercel.app",
       ]
     : ["http://localhost:3000", process.env.CORS_ORIGIN];
 
