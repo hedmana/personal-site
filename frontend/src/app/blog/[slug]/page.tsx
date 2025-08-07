@@ -5,11 +5,12 @@ import BlogPostContent from "@/components/BlogPostContent";
 import BackButton from "@/components/BackButton";
 import LikeButton from "@/components/LikeButton";
 
-type Props = { params: { slug: string } };
-
-export default async function BlogPostPage({ params }: Props) {
-  const temp_params = await params;
-  const slug = temp_params.slug;
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const post = await getBlogPostBySlug(slug);
 
   if (!post) notFound();
@@ -18,7 +19,7 @@ export default async function BlogPostPage({ params }: Props) {
     <main className="flex flex-col items-center mt-5 p-4 text-center space-y-4">
       <BlogPostHeader title={post.title} date={post.date} />
       <BlogPostContent content={post.content} />
-      <LikeButton slug={slug} />{" "}
+      <LikeButton slug={slug} />
       <BackButton href="/blog" label="Back to Blog" />
     </main>
   );
