@@ -1,4 +1,3 @@
-// db.js
 const dotenv = require("dotenv");
 const { Pool } = require("pg");
 

@@ -46,7 +46,10 @@ export default function SignupPage() {
           onChange={(e) => setPassword(e.target.value)}
           className="border p-2"
         />
-        <button type="submit" className="flex px-4 py-2 rounded-md bg-blue-500 text-white font-medium hover:bg-blue-600 transition">
+        <button
+          type="submit"
+          className="flex px-4 py-2 rounded-md bg-blue-500 text-white font-medium hover:bg-blue-600 transition"
+        >
           Sign Up
         </button>
         {error && <p className="text-red-500">{error}</p>}

@@ -26,9 +26,7 @@ export default function Navbar() {
               key={href}
               href={href}
               label={label}
-              current={
-                pathname === href || pathname.startsWith(href + "/")
-              }
+              current={pathname === href || pathname.startsWith(href + "/")}
             />
           ))}
         </div>
