@@ -11,12 +11,17 @@ const app = express();
 
 // Middlewares
 app.use(helmet());
-app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
+app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"));
 
 // CORS setup
 const allowedOrigins =
   process.env.NODE_ENV === "production"
-    ? ["https://axelhedman.com", "https://www.axelhedman.com"]
+    ? [
+        "https://axelhedman.com",
+        "https://www.axelhedman.com",
+        "https://personal-site-frontend.vercel.app", // Add this temporarily
+        "https://personal-site-git-main-hedmana.vercel.app", // Vercel auto-generates these
+      ]
     : ["http://localhost:3000", process.env.CORS_ORIGIN];
 
 app.use(
