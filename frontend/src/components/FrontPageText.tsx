@@ -14,12 +14,12 @@ export default function FrontPageText() {
         ball.{" "}
       </p>
       <p className="max-w-xl text-gray-700 text-lg">
-        I wrote my master's thesis in the{" "}
+        I'm currently working on my master's thesis in the{" "}
         <ExternalLink href="https://research.cs.aalto.fi/pml/">
           Probabilistic Machine Learning Group
         </ExternalLink>{" "}
         at Aalto, investigating how Graph Neural Networks can be applied to
-        analyze doctor-patient interaction data. During my master's I also spent
+        analyze population-scale doctor-patient interaction data. During my master's I also spent
         a semester at{" "}
         <ExternalLink href="https://ethz.ch/en.html">ETH Zürich</ExternalLink>{" "}
         Department of Health Sciences and Technology.
