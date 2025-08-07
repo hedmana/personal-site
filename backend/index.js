@@ -11,14 +11,19 @@ const app = express();
 
 // Middlewares
 app.use(helmet());
-app.use(morgan("tiny"));
+app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 
 // CORS setup
-const whitelist = [process.env.CORS_ORIGIN || "http://localhost:3000"];
+const allowedOrigins =
+  process.env.NODE_ENV === "production"
+    ? ["https://axelhedman.com", "https://www.axelhedman.com"]
+    : ["http://localhost:3000", process.env.CORS_ORIGIN];
+
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || whitelist.includes(origin)) return callback(null, true);
+      if (!origin || allowedOrigins.includes(origin))
+        return callback(null, true);
       callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
@@ -36,7 +41,13 @@ app.use("/api/auth", authRouter);
 app.use((err, req, res, next) => {
   console.error(err.stack);
   const status = err.statusCode || 500;
-  res.status(status).json({ message: err.message || "Server Error" });
+
+  const message =
+    process.env.NODE_ENV === "production"
+      ? "Server Error"
+      : err.message || "Server Error";
+
+  res.status(status).json({ message });
 });
 
 // Start the server
