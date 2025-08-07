@@ -31,18 +31,18 @@ export default function LikeButton({ slug }: LikeButtonProps) {
           if (res.ok) {
             const data = await res.json();
             setCount(data.count);
-            setLiked(data.liked); // This should come from your backend
+            setLiked(data.liked);
           } else if (res.status === 401) {
             // Token invalid, clear it and fetch public data
             localStorage.removeItem("token");
             setIsLoggedIn(false);
             await fetchPublicLikeCount();
           } else {
-            // Other error, fall back to public data
+            // Other error
             await fetchPublicLikeCount();
           }
         } else {
-          // User not logged in - only fetch like count
+          // User not logged in, only fetch like count
           await fetchPublicLikeCount();
         }
       } catch (error) {
@@ -122,9 +122,6 @@ export default function LikeButton({ slug }: LikeButtonProps) {
       <span className="text-sm text-gray-600">
         {count} {count === 1 ? "like" : "likes"}
       </span>
-      {!isLoggedIn && (
-        <span className="text-xs text-gray-500 ml-2">(Login to like)</span>
-      )}
     </div>
   );
 }

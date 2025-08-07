@@ -18,8 +18,8 @@ const allowedOrigins =
   process.env.NODE_ENV === "production"
     ? [
         "https://personal-site-theta-woad.vercel.app",
-        "https://axelhedman.fi",           // Add your domain
-        "https://www.axelhedman.fi",       // Add www version
+        "https://axelhedman.fi",
+        "https://www.axelhedman.fi",
       ]
     : [process.env.CORS_ORIGIN];
 
