@@ -18,9 +18,9 @@ export default function FrontPageText() {
         <ExternalLink href="https://research.cs.aalto.fi/pml/">
           Probabilistic Machine Learning Group
         </ExternalLink>{" "}
-        at Aalto, investigating how Graph Neural Networks can be applied to
-        analyze population-scale doctor-patient interaction data. During my master's I also spent
-        a semester at{" "}
+        at Aalto, where I'm exploring how Graph Neural Networks can help us
+        understand population-scale healthcare interactions between doctors and
+        patients. During my master's I also spent a semester at{" "}
         <ExternalLink href="https://ethz.ch/en.html">ETH Zürich</ExternalLink>{" "}
         Department of Health Sciences and Technology.
       </p>
