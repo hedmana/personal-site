@@ -4,25 +4,24 @@ export default function FrontPageText() {
   return (
     <>
       <p className="max-w-xl text-gray-700 text-lg">
-        I’m a MSc student at{" "}
+        I’m a backend, data, and machine learning enthusiast with an MSc from{" "}
         <ExternalLink href="https://www.aalto.fi/en">
           Aalto University
-        </ExternalLink>{" "}
-        with a strong background in data science and machine learning. I love
-        solving health tech challenges with code. When I'm not coding, you'll
-        find me outdoors hiking, skiing, or playing any sport that involves a
-        ball.{" "}
+        </ExternalLink>
+        . I enjoy building scalable solutions and tackling complex problems with
+        code and data. When I'm not coding, you'll find me outdoors hiking,
+        skiing, or playing any sport that involves a ball.
       </p>
       <p className="max-w-xl text-gray-700 text-lg">
-        I'm currently working on my master's thesis in the{" "}
+        For my master's thesis in the{" "}
         <ExternalLink href="https://research.cs.aalto.fi/pml/">
           Probabilistic Machine Learning Group
-        </ExternalLink>{" "}
-        at Aalto, where I'm exploring how Graph Neural Networks can help us
-        understand population-scale healthcare interactions between doctors and
-        patients. During my master's I also spent a semester at{" "}
+        </ExternalLink>
+        , I explored how Graph Neural Networks can help us understand
+        population-scale healthcare interactions between doctors and patients. I
+        also spent a semester at{" "}
         <ExternalLink href="https://ethz.ch/en.html">ETH Zürich</ExternalLink>{" "}
-        Department of Health Sciences and Technology.
+        in the Department of Health Sciences and Technology.
       </p>
       <p className="max-w-xl text-gray-700 text-lg">
         Additionally, I bring software engineering experience from{" "}
