@@ -1,5 +1,6 @@
 import React from "react";
-import ProjectCard, { Project } from "./ProjectCard";
+import ProjectCard from "./ProjectCard";
+import type { Project } from "@/types";
 
 export interface ProjectGridProps {
   projects: Project[];
