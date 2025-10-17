@@ -1,5 +1,6 @@
 // SocialLinks.tsx
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import SocialLink from "./SocialLink";
 
 export default function SocialLinks() {
@@ -14,6 +15,11 @@ export default function SocialLinks() {
         href="https://www.linkedin.com/in/axel7/"
         label="LinkedIn"
         icon={<FaLinkedin className="text-xl" />}
+      />
+      <SocialLink
+        href="https://x.com/hedmanax"
+        label="X"
+        icon={<FaXTwitter className="text-xl" />}
       />
       <SocialLink
         href="mailto:axelhedman00@gmail.com"
