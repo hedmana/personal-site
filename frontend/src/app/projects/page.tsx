@@ -1,14 +1,13 @@
 import ProjectGrid from "@/components/ProjectGrid";
-import { Project } from "@/components/ProjectCard";
+import { Project } from "@/types";
 
 // Only show selected repos
 const PROJECTS_TO_DISPLAY = [
-  "blogs",
   "chess",
-  "expenses-frontend",
-  "neural_network",
+  "leetcode",
+  "mnist-neural-network",
   "personal-site",
-  "python_tower_defense",
+  "pygame-tower-defense",
 ];
 
 export default async function ProjectsPage() {

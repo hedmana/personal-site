@@ -7,6 +7,13 @@ export type BlogPost = {
   like_count: number;
 };
 
+export type Project = {
+  id: number;
+  name: string;
+  description: string | null;
+  html_url: string;
+};
+
 export type User = {
   id: number;
   username: string;

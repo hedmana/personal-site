@@ -1,17 +1,7 @@
 import React from "react";
+import type { Project } from "@/types";
 
-export interface Project {
-  id: number;
-  name: string;
-  description: string | null;
-  html_url: string;
-}
-
-export interface ProjectCardProps {
-  project: Project;
-}
-
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="border p-4 rounded shadow hover:shadow-md hover:bg-white transition">
       <h2 className="text-xl font-semibold text-gray-700">{project.name}</h2>
